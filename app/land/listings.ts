@@ -40,7 +40,7 @@ export const listings: Listing[] = [
     summary:
       "Quiet, wooded homesite under live oaks and tall pines, with road frontage and Flood Zone X.",
     description: [
-      "Own your own piece of Florida for less than the cost of a used car. This 0.23-acre lot sits on Hudson St in Interlachen Lakes Estates, a rural neighborhood of wooded lots and scattered homes just outside the small town of Interlachen.",
+      "Own your own piece of Florida with as little as $499 down. This 0.23-acre lot sits on Hudson St in Interlachen Lakes Estates, a rural neighborhood of wooded lots and scattered homes just outside the small town of Interlachen.",
       "The lot is covered in mature live oaks hung with Spanish moss, with tall pines and palmettos toward the back. It fronts a graded sand road, one lot in from Morrison Rd, and power lines run along the road nearby.",
       "It sits in FEMA Flood Zone X, an area of minimal flood hazard. That's great for building, camping, or simply holding land in a growing part of North Central Florida, between Gainesville and Palatka.",
       "No HOA. Pay cash, or take it home with low monthly payments and no credit check.",
