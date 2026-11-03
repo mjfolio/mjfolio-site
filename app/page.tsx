@@ -1,14 +1,11 @@
-import Link from "next/link";
 import LeadForm from "./lead-form";
+import SiteHeader, { PHONE, TEL } from "./site-header";
 
 export const metadata = {
   title: "MJFolio, LLC | We Buy Land",
   description:
     "Got a letter from MJFolio? Respond to your cash offer for your vacant land. No agents, no commissions, and we cover closing costs.",
 };
-
-const PHONE = "(561) 283-7648";
-const TEL = "tel:+15612837648";
 
 const perks = [
   "No real estate agents and no commissions",
@@ -38,16 +35,7 @@ const ghost = `${btn} border-2 border-green-800 text-green-800 hover:bg-green-50
 export default function Home() {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
-      <header className="border-b border-stone-200 bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3.5">
-          <Link href="/" className="text-lg font-bold tracking-tight">
-            MJ<span className="text-green-800">Folio</span>, LLC
-          </Link>
-          <a href={TEL} className="whitespace-nowrap font-semibold text-green-800">
-            <span className="hidden sm:inline">Call </span>{PHONE}
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
         <div className="mx-auto grid max-w-5xl items-start gap-8 px-4 pb-8 pt-7 md:grid-cols-[1.1fr_1fr] md:gap-10 md:pt-12">

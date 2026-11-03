@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bethenextowner.com"),
   title: "MJFolio, LLC",
   description: "MJFolio, LLC buys vacant land directly from owners.",
 };
