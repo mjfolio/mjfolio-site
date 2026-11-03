@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
 
 // Emails a landing-page form submission to LEAD_TO (defaults to EMAIL_USER).
-const FIELDS = ['name', 'phone', 'email', 'apn', 'county', 'state', 'intent', 'message'];
+// Seller responses come from the home page; buyer inquiries (kind: 'buyer') from /land listings.
+const FIELDS = ['name', 'phone', 'email', 'apn', 'county', 'state', 'intent', 'message', 'property'];
 
 // Single-line fields get newlines collapsed (keeps the email subject/header clean)
 function clean(v, max, multiline = false) {
@@ -22,15 +23,19 @@ export async function POST(request) {
     return Response.json({ ok: false, error: 'missing fields' }, { status: 400 });
   }
 
-  const optOut = lead.intent.startsWith('Not interested');
+  const buyer = body.kind === 'buyer';
+  const optOut = !buyer && lead.intent.startsWith('Not interested');
   const when = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
   const where = [lead.county, lead.state].filter(Boolean).join(', ');
-  const subject = optOut
-    ? `Opt-out: ${lead.name}${lead.apn ? ` (APN ${lead.apn})` : ''}`
-    : `New seller lead: ${lead.name}${where ? ` – ${where}` : ''}`;
+  const subject = buyer
+    ? `Buyer inquiry: ${lead.name} – ${lead.property || lead.apn || 'land listing'}`
+    : optOut
+      ? `Opt-out: ${lead.name}${lead.apn ? ` (APN ${lead.apn})` : ''}`
+      : `New seller lead: ${lead.name}${where ? ` – ${where}` : ''}`;
 
   const text =
     `${lead.intent}\n\n` +
+    (buyer ? `Property: ${lead.property || '-'}\n` : '') +
     `Name:    ${lead.name}\n` +
     `Phone:   ${lead.phone || '-'}\n` +
     `Email:   ${lead.email || '-'}\n` +
