@@ -33,8 +33,8 @@ export const listings: Listing[] = [
     county: "Putnam",
     state: "FL",
     acres: 0.23,
-    cashPrice: 6900,
-    terms: { down: 499, monthly: 179, months: 48 },
+    cashPrice: 9500,
+    terms: { down: 499, monthly: 249, months: 48 },
     lat: 29.6431,
     lng: -81.8472,
     summary:
