@@ -28,7 +28,6 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
   if (!l) notFound();
 
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lng}`;
-  const termsTotal = l.terms.down + l.terms.monthly * l.terms.months;
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
@@ -57,7 +56,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
                   {money(l.terms.monthly)}<span className="text-lg font-semibold">/mo</span>
                 </p>
                 <p className="text-stone-600">
-                  {money(l.terms.down)} down, {l.terms.months} months ({money(termsTotal)} total). No credit check.
+                  {money(l.terms.down)} down, {l.terms.months} months. No credit check.
                 </p>
               </div>
             </div>
