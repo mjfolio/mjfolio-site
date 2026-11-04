@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader, { PHONE, TEL } from "../../site-header";
 import BuyerForm from "../buyer-form";
+import Gallery from "../gallery";
 import { listings, money, photoSrc } from "../listings";
 
 export const dynamicParams = false;
@@ -27,7 +27,6 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
   const l = find((await params).slug);
   if (!l) notFound();
 
-  const [hero, ...rest] = l.photos;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lng}`;
   const termsTotal = l.terms.down + l.terms.monthly * l.terms.months;
 
@@ -42,18 +41,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
           {l.location} · {l.county} County · {l.acres} acres
         </p>
 
-        <a href={photoSrc(l, hero)} target="_blank" className="relative mb-3 block aspect-video overflow-hidden rounded-2xl">
-          <Image src={photoSrc(l, hero)} alt={hero.alt} fill priority sizes="(min-width: 1024px) 992px, 100vw" className="object-cover" />
-        </a>
-        <ul className="mb-8 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
-          {rest.map((p) => (
-            <li key={p.file}>
-              <a href={photoSrc(l, p)} target="_blank" className="relative block aspect-[4/3] overflow-hidden rounded-lg">
-                <Image src={photoSrc(l, p)} alt={p.alt} fill sizes="(min-width: 768px) 200px, 33vw" className="object-cover hover:opacity-90" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <Gallery photos={l.photos.map((p) => ({ src: photoSrc(l, p), alt: p.alt, w: p.w, h: p.h }))} />
 
         <div className="grid items-start gap-8 md:grid-cols-[1.2fr_1fr] md:gap-10">
           <div>
