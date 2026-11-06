@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!l) return {};
   return {
     title: `${l.title}, ${l.location} | MJFolio, LLC`,
-    description: `${l.summary} ${money(l.cashPrice)} cash or ${money(l.terms.down)} down + ${money(l.terms.monthly)}/mo.`,
+    description: `${l.summary} ${money(l.cashPrice)} cash + ${money(l.docFee)} doc fee, or ${money(l.terms.down)} down + ${money(l.terms.monthly)}/mo.`,
     openGraph: { images: [photoSrc(l, l.photos[0])] },
   };
 }
@@ -48,7 +48,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
               <div className="rounded-2xl border border-stone-200 bg-white p-5">
                 <p className="text-sm font-semibold uppercase tracking-wider text-stone-500">Cash price</p>
                 <p className="text-3xl font-bold text-green-800">{money(l.cashPrice)}</p>
-                <p className="text-stone-600">We cover closing costs</p>
+                <p className="text-stone-600">+ {money(l.docFee)} doc fee. We cover closing costs.</p>
               </div>
               <div className="rounded-2xl border border-stone-200 bg-white p-5">
                 <p className="text-sm font-semibold uppercase tracking-wider text-stone-500">Owner financing</p>
