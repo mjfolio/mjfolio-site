@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!l) return {};
   return {
     title: `${l.title}, ${l.location} | MJFolio, LLC`,
-    description: `${l.summary} ${money(l.cashPrice)} cash + ${money(l.docFee)} doc fee, or ${money(l.terms.down)} down + ${money(l.terms.monthly)}/mo.`,
+    description: `${l.summary} ${money(l.cashPrice)} cash or ${money(l.terms.down)} down + ${money(l.terms.monthly)}/mo, plus a ${money(l.docFee)} doc fee.`,
     openGraph: { images: [photoSrc(l, l.photos[0])] },
   };
 }
@@ -56,7 +56,7 @@ export default async function ListingPage({ params }: { params: Promise<{ slug: 
                   {money(l.terms.monthly)}<span className="text-lg font-semibold">/mo</span>
                 </p>
                 <p className="text-stone-600">
-                  {money(l.terms.down)} down, {l.terms.months} months. No credit check.
+                  {money(l.terms.down)} down + {money(l.docFee)} doc fee, {l.terms.months} months. No credit check.
                 </p>
               </div>
             </div>

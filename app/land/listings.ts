@@ -11,7 +11,7 @@ export type Listing = {
   state: string;
   acres: number;
   cashPrice: number;
-  docFee: number; // charged on top of the cash price
+  docFee: number; // charged on top of cash price and owner-financing down payment
   terms: { down: number; monthly: number; months: number };
   lat: number;
   lng: number;
