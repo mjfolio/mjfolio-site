@@ -49,7 +49,8 @@ export default function LandPage() {
                   <p className="mb-3 text-stone-600">{l.location}</p>
                   <p className="text-xl font-bold text-green-800">{money(l.cashPrice)} cash</p>
                   <p className="text-stone-600">
-                    or {money(l.terms.down)} down + {money(l.terms.monthly)}/mo
+                    or {money(l.terms.down)} down + {money(l.terms.monthly)}/mo<br />
+                    <span className="text-sm">Plus {money(l.docFee)} doc fee</span>
                   </p>
                 </div>
               </Link>

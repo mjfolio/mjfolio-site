@@ -11,6 +11,7 @@ export type Listing = {
   state: string;
   acres: number;
   cashPrice: number;
+  docFee: number; // charged on top of cash price and owner-financing down payment
   terms: { down: number; monthly: number; months: number };
   lat: number;
   lng: number;
@@ -34,6 +35,7 @@ export const listings: Listing[] = [
     state: "FL",
     acres: 0.23,
     cashPrice: 9500,
+    docFee: 199,
     terms: { down: 499, monthly: 249, months: 48 },
     lat: 29.6431,
     lng: -81.8472,
